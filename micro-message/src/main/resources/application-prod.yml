@@ -1,8 +1,8 @@
 rabbitmq:
     host: 192.168.109.128
     port: 5672
-    username: admin
-    password: 753951
+    username: guest
+    password: guest
     publisher-confirms: true
-    virtual-host: common
+    virtual-host: /
     channel-cache-size: 100
