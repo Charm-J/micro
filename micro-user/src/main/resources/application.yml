@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: @profileActive@
+  http:
+      encoding:
+        force: true
+        charset: UTF-8
+        enabled: true
+
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-header-size: 65536 #bytes 64k
+  servlet:
+    context-path: /
+    max-http-header-size: 65536 #bytes 64k
+    multipart:
+          # 单个文件最大长度
+          max-file-size: 15MB
+          # 单次http请求上传的最大长度
+          max-request-size: 20MB
+
+
+druid:
+  account: admin
+  password: 123456
+
+mybatis:
+  mapper-locations: classpath:/com/jeff/user/dao/*.xml # xml文件所在路径
+  type-aliases-package: com.jeff.user.model # <映射类>所在的包名

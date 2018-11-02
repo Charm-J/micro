@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: @profileActive@
+  mail:
+   host: smtp.qq.com
+   username: 734501671@qq.com
+   password: tqnobbpesetzbfdi
+   properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+              enable: true
+              required: true
+
+logging:
+  file: logs/message.log
+
+server:
+  tomcat:
+      uri-encoding: UTF-8
+  servlet:
+    context-path: /message
+

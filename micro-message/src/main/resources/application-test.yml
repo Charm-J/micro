@@ -1,0 +1,8 @@
+rabbitmq:
+    host: 192.168.109.128
+    port: 5672
+    username: admin
+    password: 753951
+    publisher-confirms: true
+    virtual-host: common
+    channel-cache-size: 100
