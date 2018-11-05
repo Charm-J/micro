@@ -6,7 +6,7 @@ spring:
         address: zookeeper://192.168.109.128:2181
       protocol:     #协议配置
         name: dubbo
-        port: 20883
+        port: 20880
       scan: com.jeff.user.service  #服务实现类所在的路径
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

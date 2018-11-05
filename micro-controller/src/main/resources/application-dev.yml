@@ -4,7 +4,4 @@ spring:
         name: controller-consumer # 本服务的名称
       registry:                 #注册中心配置，用于配置连接注册中心相关信息。
         address: zookeeper://192.168.109.128:2181
-      protocol:     #协议配置
-        name: dubbo
-        port: 20883
       scan: com.jeff.controller  #服务实现类所在的路径
