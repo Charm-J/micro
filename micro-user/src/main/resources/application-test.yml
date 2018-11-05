@@ -1,34 +1,34 @@
 spring:
   dubbo:
       application:
-        name: user-provider # æœ¬æœåŠ¡çš„åç§°
-      registry:                 #æ³¨å†Œä¸­å¿ƒé…ç½®ï¼Œç”¨äºé…ç½®è¿æ¥æ³¨å†Œä¸­å¿ƒç›¸å…³ä¿¡æ¯ã€‚
+        name: user-provider # ±¾·şÎñµÄÃû³Æ
+      registry:                 #×¢²áÖĞĞÄÅäÖÃ£¬ÓÃÓÚÅäÖÃÁ¬½Ó×¢²áÖĞĞÄÏà¹ØĞÅÏ¢¡£
         address: zookeeper://192.168.109.128:2181
-      protocol:     #åè®®é…ç½®
+      protocol:     #Ğ­ÒéÅäÖÃ
         name: dubbo
         port: 20880
-      scan: com.jeff.user.service  #æœåŠ¡å®ç°ç±»æ‰€åœ¨çš„è·¯å¾„
+      scan: com.jeff.user.service  #·şÎñÊµÏÖÀàËùÔÚµÄÂ·¾¶
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://123.207.253.82:31306/micro?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
     password: yetingfm@2018
-    # è¿æ¥æ± é…ç½®
+    # Á¬½Ó³ØÅäÖÃ
     initialSize: 10
     minIdle: 10
     maxActive: 100
-    # è¿æ¥ç­‰å¾…è¶…æ—¶æ—¶é—´
+    # Á¬½ÓµÈ´ı³¬Ê±Ê±¼ä
     maxWait: 60000
-    # æ‰«æé—´éš”æ—¶é—´(æ£€æµ‹å¯ä»¥å…³é—­çš„ç©ºé—²è¿æ¥)
+    # É¨Ãè¼ä¸ôÊ±¼ä(¼ì²â¿ÉÒÔ¹Ø±ÕµÄ¿ÕÏĞÁ¬½Ó)
     timeBetweenEvictionRunsMillis: 60000
-    # é…ç½®è¿æ¥åœ¨æ± ä¸­çš„æœ€å°ç”Ÿå­˜æ—¶é—´
+    # ÅäÖÃÁ¬½ÓÔÚ³ØÖĞµÄ×îĞ¡Éú´æÊ±¼ä
     minEvictableIdleTimeMillis: 300000
     validationQuery: SELECT 1 FROM DUAL
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
-    # æ‰“å¼€PSCacheï¼Œå¹¶ä¸”æŒ‡å®šæ¯ä¸ªè¿æ¥ä¸ŠPSCacheçš„å¤§å°
+    # ´ò¿ªPSCache£¬²¢ÇÒÖ¸¶¨Ã¿¸öÁ¬½ÓÉÏPSCacheµÄ´óĞ¡
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
   redis:
@@ -36,10 +36,10 @@ spring:
     port: 7481
     database: 6
     password: 1234567890
-  flyway: # æ•°æ®åº“ååŒç®¡ç†å·¥å…·-è‡ªåŠ¨æ›´æ–°æ•°æ®åº“è¡¨-æ¯æ¬¡å¯åŠ¨éƒ½ä¼šæ‰§è¡Œä¸€æ¬¡
-    enabled: true # å»ºè®®ä»[å¼€å‘]æ›´æ–°åˆ°[æµ‹è¯•]ã€[æ­£å¼]ç¯å¢ƒçš„æ—¶å€™ä½¿ç”¨
-    locations: classpath:/db/ # è¿ç§»è„šæœ¬çš„ä½ç½®
-    baseline-on-migrate: true # è‡ªåŠ¨æ‰§è¡ŒåŸºå‡†è¿ç§»
+  flyway: # Êı¾İ¿âĞ­Í¬¹ÜÀí¹¤¾ß-×Ô¶¯¸üĞÂÊı¾İ¿â±í-Ã¿´ÎÆô¶¯¶¼»áÖ´ĞĞÒ»´Î
+    enabled: true # ½¨Òé´Ó[¿ª·¢]¸üĞÂµ½[²âÊÔ]¡¢[ÕıÊ½]»·¾³µÄÊ±ºòÊ¹ÓÃ
+    locations: classpath:/db/ # Ç¨ÒÆ½Å±¾µÄÎ»ÖÃ
+    baseline-on-migrate: true # ×Ô¶¯Ö´ĞĞ»ù×¼Ç¨ÒÆ
 
 logging:
   file: logs/user.log

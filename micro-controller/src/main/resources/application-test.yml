@@ -1,7 +1,30 @@
 spring:
   dubbo:
       application:
-        name: controller-consumer # 本服务的名称
-      registry:                 #注册中心配置，用于配置连接注册中心相关信息。
+        name: controller-consumer #123
+      registry:
         address: zookeeper://192.168.109.128:2181
-      scan: com.jeff.controller  #服务实现类所在的路径
+      scan: com.jeff.controller
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://123.207.253.82:31306/micro?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    username: root
+    password: yetingfm@2018
+    # 连接池配置
+    initialSize: 10
+    minIdle: 10
+    maxActive: 100
+    # 连接等待超时时间
+    maxWait: 60000
+    # 扫描间隔时间(检测可以关闭的空闲连接)
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置连接在池中的最小生存时间
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
