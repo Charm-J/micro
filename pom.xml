@@ -116,6 +116,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- ZooKeeper client -->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.10</version>
+        </dependency>
+
 
         <!-- 公共jar包 -->
         <dependency>
