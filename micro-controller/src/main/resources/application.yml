@@ -5,13 +5,11 @@ spring:
 server:
   tomcat:
     uri-encoding: UTF-8
-    max-http-header-size: 65536 #bytes 64k
+    max-http-header-size: 65536
   servlet:
     context-path: /micro-controller
-    max-http-header-size: 65536 #bytes 64k
+    max-http-header-size: 65536
     multipart:
-          # 单个文件最大长度
           max-file-size: 15MB
-          # 单次http请求上传的最大长度
           max-request-size: 20MB
 

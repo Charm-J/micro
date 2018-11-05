@@ -1,7 +1,7 @@
 spring:
   dubbo:
       application:
-        name: controller-consumer #123
+        name: controller-consumer # æœ¬æœåŠ¡çš„åç§°
       registry:
         address: zookeeper://192.168.109.128:2181
       scan: com.jeff.controller
@@ -11,20 +11,20 @@ spring:
     url: jdbc:mysql://123.207.253.82:31306/micro?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
     password: yetingfm@2018
-    # Á¬½Ó³ØÅäÖÃ
+    # è¿æ¥æ± é…ç½®
     initialSize: 10
     minIdle: 10
     maxActive: 100
-    # Á¬½ÓµÈ´ı³¬Ê±Ê±¼ä
+    # è¿æ¥ç­‰å¾…è¶…æ—¶æ—¶é—´
     maxWait: 60000
-    # É¨Ãè¼ä¸ôÊ±¼ä(¼ì²â¿ÉÒÔ¹Ø±ÕµÄ¿ÕÏĞÁ¬½Ó)
+    # æ‰«æé—´éš”æ—¶é—´(æ£€æµ‹å¯ä»¥å…³é—­çš„ç©ºé—²è¿æ¥)
     timeBetweenEvictionRunsMillis: 60000
-    # ÅäÖÃÁ¬½ÓÔÚ³ØÖĞµÄ×îĞ¡Éú´æÊ±¼ä
+    # é…ç½®è¿æ¥åœ¨æ± ä¸­çš„æœ€å°ç”Ÿå­˜æ—¶é—´
     minEvictableIdleTimeMillis: 300000
     validationQuery: SELECT 1 FROM DUAL
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
-    # ´ò¿ªPSCache£¬²¢ÇÒÖ¸¶¨Ã¿¸öÁ¬½ÓÉÏPSCacheµÄ´óĞ¡
+    # æ‰“å¼€PSCacheï¼Œå¹¶ä¸”æŒ‡å®šæ¯ä¸ªè¿æ¥ä¸ŠPSCacheçš„å¤§å°
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20

@@ -15,9 +15,9 @@ server:
     context-path: /micro-user
     max-http-header-size: 65536 #bytes 64k
     multipart:
-          # µ¥¸öÎÄ¼ş×î´ó³¤¶È
+          # å•ä¸ªæ–‡ä»¶æœ€å¤§é•¿åº¦
           max-file-size: 15MB
-          # µ¥´ÎhttpÇëÇóÉÏ´«µÄ×î´ó³¤¶È
+          # å•æ¬¡httpè¯·æ±‚ä¸Šä¼ çš„æœ€å¤§é•¿åº¦
           max-request-size: 20MB
 
 druid:
@@ -25,5 +25,5 @@ druid:
   password: 123456
 
 mybatis:
-  mapper-locations: classpath:/com/jeff/user/dao/*.xml # xmlÎÄ¼şËùÔÚÂ·¾¶
-  type-aliases-package: com.jeff.user.model # <Ó³ÉäÀà>ËùÔÚµÄ°üÃû
+  mapper-locations: classpath:/com/jeff/user/dao/*.xml # xmlæ–‡ä»¶æ‰€åœ¨è·¯å¾„
+  type-aliases-package: com.jeff.user.model # <æ˜ å°„ç±»>æ‰€åœ¨çš„åŒ…å
