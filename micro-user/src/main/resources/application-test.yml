@@ -47,5 +47,5 @@ logging:
     com.jeff.user.dao: error
 
 global:
-  uploadPath: E:/tmp/micro
+  uploadPath: /tmp/micro/upload
 
