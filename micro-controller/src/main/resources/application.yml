@@ -13,3 +13,6 @@ server:
           max-file-size: 15MB
           max-request-size: 20MB
 
+my:
+  service:
+    version: 1.0.0

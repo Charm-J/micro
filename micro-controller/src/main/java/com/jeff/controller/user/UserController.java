@@ -7,10 +7,7 @@ import com.jeff.api.service.UserService;
 import com.jeff.api.utils.ParamUtil;
 import com.jeff.controller.annotation.Log;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户控制类
@@ -22,8 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    //@Autowired -- 此处不能使用Autowired
-    @Reference(version = "1.0.0", check = false)
+    @Reference(
+            version = "${my.service.version}",
+            check = false)
     private UserService userService;
 
 
@@ -42,5 +40,14 @@ public class UserController {
         return userService.login(loginReq);
     }
 
-    ;
+    /**
+     * 测试
+     * @param name
+     * @return
+     */
+    @Log
+    @GetMapping("/sayHello")
+    public String sayHello(@RequestParam String name) {
+        return userService.sayHello(name);
+    }
 }

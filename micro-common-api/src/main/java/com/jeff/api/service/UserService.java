@@ -18,4 +18,15 @@ public interface UserService {
      * @return Result
      */
     Result login(LoginReq loginReq);
+
+
+    /**
+     * 测试接口
+     * @param name
+     * @return
+     */
+    String sayHello(String name);
+
+
+
 }

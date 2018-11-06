@@ -4,13 +4,14 @@ package com.jeff.user.service;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.jeff.api.common.Result;
 import com.jeff.api.common.ResultHelper;
-import com.jeff.api.model.vo.LoginReq;
 import com.jeff.api.exception.ExceptionEnum;
+import com.jeff.api.model.vo.LoginReq;
 import com.jeff.api.service.UserService;
 import com.jeff.api.utils.MD5Util;
 import com.jeff.user.dao.UserMapper;
 import com.jeff.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -21,8 +22,8 @@ import java.util.List;
  * @author DJ
  * @date 2018/10/30 14:13
  */
-@Service(version = "1.0.0")
-@org.springframework.stereotype.Service
+@Service(version = "${my.service.version}")
+@Component
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -43,6 +44,11 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             return ResultHelper.error(ExceptionEnum.INTERNAL_ERROR);
         }
+    }
+
+    @Override
+    public String sayHello(String name) {
+        return "Hello, " + name + " (from Spring Boot)";
     }
 
 

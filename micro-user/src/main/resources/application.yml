@@ -19,6 +19,7 @@ server:
           max-file-size: 15MB
           # 单次http请求上传的最大长度
           max-request-size: 20MB
+  port: 8081
 
 druid:
   account: admin
@@ -27,3 +28,7 @@ druid:
 mybatis:
   mapper-locations: classpath:/com/jeff/user/dao/*.xml # xml文件所在路径
   type-aliases-package: com.jeff.user.model # <映射类>所在的包名
+
+my:
+  service:
+    version: 1.0.0
