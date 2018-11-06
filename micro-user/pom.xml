@@ -5,6 +5,7 @@
 
     <groupId>com.jeff</groupId>
     <artifactId>micro-user</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>micro-user</name>
@@ -17,5 +18,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <build>
+        <finalName>micro-user</finalName>
+    </build>
 
 </project>

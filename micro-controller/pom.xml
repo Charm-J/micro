@@ -5,6 +5,7 @@
 
     <groupId>com.jeff</groupId>
     <artifactId>micro-controller</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>micro-controller</name>
@@ -16,6 +17,10 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
+    <build>
+        <finalName>micro-controller</finalName>
+    </build>
 
 
 </project>
