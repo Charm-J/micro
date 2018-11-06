@@ -1,4 +1,4 @@
-package com.jeff.api.common;
+package com.jeff.controller.common;
 
 import com.jeff.api.utils.JsonUtil;
 import org.slf4j.Logger;

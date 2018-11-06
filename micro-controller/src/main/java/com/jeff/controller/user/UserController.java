@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     //@Autowired -- 此处不能使用Autowired
-    @Reference(version = "1.0.0")
+    @Reference(version = "1.0.0", check = false)
     private UserService userService;
 
 

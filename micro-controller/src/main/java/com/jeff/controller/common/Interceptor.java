@@ -2,7 +2,6 @@ package com.jeff.controller.common;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jeff.api.common.Const;
-import com.jeff.api.common.Redis;
 import com.jeff.api.exception.AppException;
 import com.jeff.api.exception.ExceptionEnum;
 import com.jeff.api.model.User;

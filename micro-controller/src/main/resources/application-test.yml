@@ -28,3 +28,18 @@ spring:
     # 打开PSCache，并且指定每个连接上PSCache的大小
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
+  redis:
+    host: 123.207.253.82
+    port: 7481
+    database: 6
+    password: 1234567890
+    jedis:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+  flyway: # 数据库协同管理工具-自动更新数据库表-每次启动都会执行一次
+    enabled: false # 建议从[开发]更新到[测试]、[正式]环境的时候使用
+    locations: classpath:/db/ # 迁移脚本的位置
+    baseline-on-migrate: true # 自动执行基准迁移
