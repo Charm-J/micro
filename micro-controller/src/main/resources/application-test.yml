@@ -3,8 +3,7 @@ spring:
       application:
         name: controller-consumer # 本服务的名称
       registry:
-        # address: zookeeper://192.168.109.128:2181
-        address: zookeeper://127.0.0.1:2181 #docker-使用network与zk构建共享网络
+        address: zookeeper://192.168.109.128:2181
       scan: com.jeff.controller
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
