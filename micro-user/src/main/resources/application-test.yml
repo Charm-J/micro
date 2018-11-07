@@ -4,7 +4,8 @@ spring:
         name: user-provider # 本服务的名称
       registry:                 #注册中心配置，用于配置连接注册中心相关信息。
         # address: zookeeper://192.168.109.128:2181
-        address: zookeeper://127.0.0.1:2181 #docker-使用network与zk构建共享网络
+        # address: zookeeper://127.0.0.1:2181 #docker-使用network与zk构建共享网络
+        address: zookeeper://172.18.0.3:2181 #docker-zk容器内部IP
       protocol:     #协议配置
         name: dubbo
         port: 20880
