@@ -189,8 +189,8 @@ docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:5
 初始化Jenkins
 然后你需要访问IP:9002，Jenkins会带着你进行一系列的初始化设置，你只要跟着它一步步走就行了，比较傻瓜式。
 4.2 在Jenkins中创建项目
-点击页面左侧的“新建”按钮：
-![](https://github.com/Charm-J/micro/blob/master/image/8.png)
+点击页面左侧的“新建”按钮：<br>
+![](https://github.com/Charm-J/micro/blob/master/image/8.png) <br>
 输入项目名称micro-user，选择“构建一个Maven项目”，然后点击“OK”：
 配置Git仓库
 选择Git，然后输入本项目Git仓库的URL，并在Credentials中输入Git的用户名和密码，
