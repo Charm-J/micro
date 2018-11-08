@@ -1,9 +1,10 @@
 # micro
 SpringBoot+Dubbo 微服务 Docker 容器化 Jenkins 自动化部署
-What can I learn？
+<br>
+What can I learn？<br>
 从0搭建一整套微服务系统。
 
-What is Micro-Service?
+What is Micro-Service?<br>
 微服务架构
 整个应用程序将会被拆分成一个个功能独立的子系统，可独立运行；
 系统与系统之间通过RPC接口通信。这样系统间的耦合度大大降低，易扩展。
@@ -12,7 +13,7 @@ What is Micro-Service?
 自动化构建
 项目被微服务化后，各个服务之间的关系错综复杂，打包构建费事费力。通过借助Jenkins，实现一键自动化部署。
 
-Why use them?
+Why use them?<br>
 1.为什么用微服务：
 系统架构的演进过程：单机结构->集群结构->微服务结构。
 微服务结构好处有很多：
@@ -340,5 +341,5 @@ spring.profiles.active=@profileActive@
 ![](https://github.com/Charm-J/micro/blob/master/image/18.png)
 jekins 成功部署后
 可以浏览器访问：http://192.168.109.128:8001/micro-controller/user/sayHello?name=2222
-测试服务调用是否成功！
+测试服务调用是否成功！<br>
 ![](https://github.com/Charm-J/micro/blob/master/image/19.png)
