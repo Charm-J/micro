@@ -72,11 +72,11 @@ New一个Project
 * 创建Module  
 
 在Project上New Module  
-![](https://github.com/Charm-J/micro/blob/master/image/4.png)
+![](https://github.com/Charm-J/micro/blob/master/image/4.png)  
+
 和刚才一样，选择Spring Initializr，设置groupId、artifactId、version
 依次创建好所有的Module，如下图所示： 
 ![](https://github.com/Charm-J/micro/blob/master/image/5.png)
-
 * 构建模块的依赖关系  
 目前为止，模块之间没有任何联系，下面我们要通过pom文件来指定它们之间的依赖关系。
 ![](https://github.com/Charm-J/micro/blob/master/image/6.png)
@@ -160,15 +160,15 @@ modules标签指定了当前模块的子模块是谁，但是仅在父模块的p
 ```
 docker run --privileged=true --name micro-user -p 8002:8080 -v /opt/micro/tomcat/logs:/usr/local/tomcat/logs  -v /opt/micro/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml -v /opt/micro/tomcat/conf/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml -d docker.io/tomcat:8
 ```
-_* --name *_：指定容器的名字  
+_--name_：指定容器的名字  
 
-_* -p *_：指定容器的端口映射 -p 8082:8080 表示将容器的8080端口映射到宿主机的8082端口上  
+_-p_：指定容器的端口映射 -p 8082:8080 表示将容器的8080端口映射到宿主机的8082端口上  
 
-_* -v *_：指定容器数据卷的映射 xxx:yyy 表示将容器yyy目录映射到宿主机的xxx目录上，从而访问宿主机的xxx目录就相当于访问容器的yyy目录。  
+_-v_：指定容器数据卷的映射 xxx:yyy 表示将容器yyy目录映射到宿主机的xxx目录上，从而访问宿主机的xxx目录就相当于访问容器的yyy目录。  
 
 docker.io/tomcat:8：表示容器所对应的镜像。  
 
-第二个_* -v *_解决cargo远程自动部署Jekins报错403的问题-涉及到的文件中有IP限制
+第二个 _-v_ 解决cargo远程自动部署Jekins报错403的问题-涉及到的文件中有IP限制
 这条命令执行成功后，你就可以通过你的IP:8082 访问到micro-user容器的tomcat了。如果你看到了那只眼熟了猫，那就说明容器启动成功了！ 
 ![](https://github.com/Charm-J/micro/blob/master/image/7.png)
 接下来，你需要按照上面的方法，给剩下几个系统创建好Tomcat容器。
@@ -178,7 +178,7 @@ docker.io/tomcat:8：表示容器所对应的镜像。
 Dubbo一共定义了三种角色，分别是：服务提供者、服务消费者、注册中心。注册中心是服务提供者和服务消费者的桥梁，服务消费者会在初始化的时候将自己的IP和端口号发送给注册中心，而服务消费者通过注册中心知道服务提供者的IP和端口号。
 * 父pom文件中引入dubbo和ZK的依赖
 ```
-<<!-- Dubbo -->
+<!-- Dubbo -->
 <dependency>
     <groupId>com.alibaba.spring.boot</groupId>
     <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -213,7 +213,7 @@ Jenkins采用Java开发，也需要Java环境，但我们使用Docker后，一�
 `docker pull docker.io/jenkins/jenkins`
 
 启动容器
-需要注意：两个默认端口号不能随意抛弃。-V docker内jekins数据卷映射到宿主机上
+需要注意：两个默认端口号不能随意抛弃。_-v_ docker内jekins数据卷映射到宿主机上
 ```
 docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:50000  -v /opt/micro/jenkins:/var/jenkins_home docker.io/jenkins
 ```
