@@ -39,9 +39,9 @@ zookeeper 3.4.6
 zkclient com.101tec 0.10
 flywaydb 5.1.4
 Docker相关
-![https://github.com/Charm-J/micro/blob/master/image/1.png]
+![](https://github.com/Charm-J/micro/blob/master/image/1.png)
 
-![https://github.com/Charm-J/micro/blob/master/image/2.png]
+![](https://github.com/Charm-J/micro/blob/master/image/2.png)
 
 --------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ micro-controller 请求调度控制层
 micro-user 用户服务
 micro-message 消息服务
 micro-common-api 公用接口-被所有模块依赖
-![https://github.com/Charm-J/micro/blob/master/image/3.png]
+![](https://github.com/Charm-J/micro/blob/master/image/3.png)
 
 1.2 创建Project
 New一个Project
@@ -63,13 +63,13 @@ New一个Project
 
 2.2 创建Module
 在Project上New Module
-![https://github.com/Charm-J/micro/blob/master/image/4.png]
+![](https://github.com/Charm-J/micro/blob/master/image/4.png)
 和刚才一样，选择Spring Initializr，设置groupId、artifactId、version
 依次创建好所有的Module，如下图所示： 
-![https://github.com/Charm-J/micro/blob/master/image/5.png]
+![](https://github.com/Charm-J/micro/blob/master/image/5.png)
 1.3 构建模块的依赖关系
 目前为止，模块之间没有任何联系，下面我们要通过pom文件来指定它们之间的依赖关系。
-![https://github.com/Charm-J/micro/blob/master/image/6.png]
+![](https://github.com/Charm-J/micro/blob/master/image/6.png)
 
 需要将micro-common-api打成jar包，并让这些模块依赖这个jar。
 此外，为了简化各个模块的配置，我们将所有模块的通用依赖放在Project的pom文件中，然后让所有模块作为Project的子模块。这样子模块就可以从父模块中继承所有的依赖，而不需要自己再配置了。
@@ -140,7 +140,7 @@ docker run --privileged=true --name micro-user -p 8002:8080 -v /opt/micro/tomcat
 docker.io/tomcat:8：表示容器所对应的镜像。
 第二个-v 解决cargo远程自动部署Jekins报错403的问题-涉及到的文件中有IP限制
 这条命令执行成功后，你就可以通过你的IP:8082 访问到micro-user容器的tomcat了。如果你看到了那只眼熟了猫，那就说明容器启动成功了！ 
-![https://github.com/Charm-J/micro/blob/master/image/7.png]
+![](https://github.com/Charm-J/micro/blob/master/image/7.png)
 接下来，你需要按照上面的方法，给剩下几个系统创建好Tomcat容器。
 
 3. 整合Dubbo
@@ -190,19 +190,19 @@ docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:5
 然后你需要访问IP:9002，Jenkins会带着你进行一系列的初始化设置，你只要跟着它一步步走就行了，比较傻瓜式。
 4.2 在Jenkins中创建项目
 点击页面左侧的“新建”按钮：
-![https://github.com/Charm-J/micro/blob/master/image/8.png]
+![](https://github.com/Charm-J/micro/blob/master/image/8.png)
 输入项目名称micro-user，选择“构建一个Maven项目”，然后点击“OK”：
 配置Git仓库
 选择Git，然后输入本项目Git仓库的URL，并在Credentials中输入Git的用户名和密码，
 构建触发器
 选择第一项，如下图所示： 
-![https://github.com/Charm-J/micro/blob/master/image/9.png]
+![](https://github.com/Charm-J/micro/blob/master/image/9.png)
 Pre Step
 Pre Step会在正式构建前执行，由于所有项目都依赖于micro-common-api，因此在项目构建前，需要将它安装到本地仓库，然后才能被当前项目正确依赖。 因此，在Pre Step中填写如下信息： 
-![https://github.com/Charm-J/micro/blob/master/image/10.png]
+![](https://github.com/Charm-J/micro/blob/master/image/10.png)
 Build
 然后就是正式构建的过程，填写如下信息即可： 
-![https://github.com/Charm-J/micro/blob/master/image/11.png]
+![](https://github.com/Charm-J/micro/blob/master/image/11.png)
 OK，Jenkins服务和micro-user服务并不在同一个Docker容器中，那么究竟该如何才能将Jenkins本地编译好的war包发送到micro-userr容器中呢？这就需要使用Jenkins的一个插件——Deploy Plugin。
 4.3 远程部署
 直接在插件页面搜索Deploy to container安装。
@@ -234,10 +234,10 @@ OK，Jenkins服务和micro-user服务并不在同一个Docker容器中，那么�
 </plugin>
 
 为Tomcat设置用户名和密码
-![https://github.com/Charm-J/micro/blob/master/image/12.png]
+![](https://github.com/Charm-J/micro/blob/master/image/12.png)
 修改Jenkins中micro-user的配置
 在“构建后操作”中增加如下配置： 
-![https://github.com/Charm-J/micro/blob/master/image/13.png]
+![](https://github.com/Charm-J/micro/blob/master/image/13.png)
 WAR/EAR files：表示你需要发布的war包
 Containers：配置目标Tomcat的用户名和密码
 5. Maven的profile功能
@@ -320,14 +320,14 @@ spring.profiles.active=@profileActive@
 
 6.1 开发登录服务
 首先需要在 micro-common-api 中创建UserService接口，并在其中声明登录的抽象函数。
-![https://github.com/Charm-J/micro/blob/master/image/14.png]
+![](https://github.com/Charm-J/micro/blob/master/image/14.png)
 
 然后在micro-user中开发UserService的实现——UserServiceImpl。 UserServiceImpl上必须要加上Dubbo的@Service注解，从而告诉Dubbo，在本项目初始化的时候需要将这个类发布成一项服务，供其他系统调用。
-![https://github.com/Charm-J/micro/blob/master/image/15.png]
+![](https://github.com/Charm-J/micro/blob/master/image/15.png)
 
 6.2 引用登录服务
 当UserService开发完毕后，接下来micro-controller需要引用该服务，并向前端提供一个登录的REST接口。 若要使用userService中的函数，仅需要在userService上添加@Reference注解，然后就像调用本地函数一样使用userService即可。Dubbo会帮你找到UserService服务所在的IP和端口号，并发送调用请求。但这一切对于程序猿来说是完全透明的。
-![https://github.com/Charm-J/micro/blob/master/image/16.png]
+![](https://github.com/Charm-J/micro/blob/master/image/16.png)
 
 6.3 自动构建服务
 上面的代码完成后，接下来你需要将代码提交至你的Git仓库。接下来就是自动化部署的过程了。
@@ -335,10 +335,10 @@ spring.profiles.active=@profileActive@
 6.4 查看服务的状态
 当Jenkins构建完成后，我们可以登录Dubbo-Admin查看服务发布和引用的状态。
 当我们搜索UserService服务后，可以看到，该服务的提供者已经成功发布了服务： 
-![https://github.com/Charm-J/micro/blob/master/image/17.png]
+![](https://github.com/Charm-J/micro/blob/master/image/17.png)
 点击“消费者”我们可以看到，该服务已经被controller-consumer成功订阅： 
-![https://github.com/Charm-J/micro/blob/master/image/18.png]
+![](https://github.com/Charm-J/micro/blob/master/image/18.png)
 jekins 成功部署后
 可以浏览器访问：http://192.168.109.128:8001/micro-controller/user/sayHello?name=2222
 测试服务调用是否成功！
-![https://github.com/Charm-J/micro/blob/master/image/19.png]
+![](https://github.com/Charm-J/micro/blob/master/image/19.png)
