@@ -459,4 +459,5 @@ docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:5
 * Dubbo 提供方需要指定注册中心端口，消费方不需要指定注册中心端口。
 * Dubbo-admin 没有数据，多半是注册中心连不上。
 * ZK 数据windows可视化工具[ZooInspector]
-* 同一宿主机下各个容器间通信：使用默认bridge方式。A容器需要B容器的服务，可是使用[宿主机IP]+[宿主机被映射端口]的方式访问。
+* 同一宿主机下各个容器间通信：本项目使用默认bridge方式。A容器需要B容器的服务，可是使用[宿主机IP]+[宿主机被映射端口]的方式访问。
+* Docker 可视化管理平台推荐使用[Portainer]
