@@ -221,6 +221,17 @@ docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:5
 初始化Jenkins
 然后你需要访问IP:9002，Jenkins会带着你进行一系列的初始化设置，你只要跟着它一步步执行就OK  
 
+* Jenkins插件安装
+Jenkins线上安装插件需要连接谷歌，没有默认安装，可通过搜索安装：  
+
+依次点击 系统管理->插件管理-> 可选插件-> 过滤搜索框中 查找如下插件：
+```
+Maven Integration plugin
+SSH plugin
+Deploy to container Plugin
+GitHub Integration Plugin
+```
+
 * 在Jenkins中创建项目
 点击页面左侧的“新建”按钮：<br>
 ![](https://github.com/Charm-J/micro/blob/master/image/8.png) <br>
@@ -237,6 +248,7 @@ Build
 然后就是正式构建的过程，填写如下信息即可： 
 ![](https://github.com/Charm-J/micro/blob/master/image/11.png)
 OK，Jenkins服务和micro-user服务并不在同一个Docker容器中，那么究竟该如何才能将Jenkins本地编译好的war包发送到micro-userr容器中呢？这就需要使用Jenkins的一个插件——Deploy Plugin  
+
 
 * 远程部署
 直接在插件页面搜索Deploy to container安装。
@@ -273,8 +285,10 @@ OK，Jenkins服务和micro-user服务并不在同一个Docker容器中，那么�
 修改Jenkins中micro-user的配置
 在“构建后操作”中增加如下配置： 
 ![](https://github.com/Charm-J/micro/blob/master/image/13.png)
-WAR/EAR files：表示你需要发布的war包
+WAR/EAR files：表示你需要发布的war包  
+
 Containers：配置目标Tomcat的用户名和密码  
+
 
 ##### 5. Maven的profile功能
 在实际开发中，我们的系统往往有多套环境构成，如：开发环境、测试环境、预发环境、生产环境。而不同环境的配置各不相同。如果我们只有一套配置，那么当系统从一个环境迁移到另一个环境的时候，就需要通过修改代码来更换配置，这样无疑增加了工作的复杂度，而且易于出错。但好在Maven提供了profile功能，能帮助我们解决这一个问题。
@@ -390,3 +404,59 @@ jekins 成功部署后
 可以浏览器访问：http://192.168.109.128:8001/micro-controller/user/sayHello?name=2222
 测试服务调用是否成功！<br>
 ![](https://github.com/Charm-J/micro/blob/master/image/19.png)
+
+#### docker启动相关服务指令汇总
+* miro-controller > tomcat启动
+```
+docker run --privileged=true --name micro-controller -p 8001:8080 -v /opt/micro/tomcat/logs:/usr/local/tomcat/logs  -v /opt/micro/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml -v /opt/micro/tomcat/conf/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml -d docker.io/tomcat:8
+```
+* micro-user  > tomcat启动
+```
+docker run --privileged=true --name micro-user -p 8002:8080 -v /opt/micro/tomcat/logs:/usr/local/tomcat/logs  -v /opt/micro/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml -v /opt/micro/tomcat/conf/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml -d docker.io/tomcat:8
+```
+* micro-message  > tomcat启动
+```
+docker run --privileged=true --name micro-message -p 8003:8080 -v /opt/micro/tomcat/logs:/usr/local/tomcat/logs  -v /opt/micro/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml -v /opt/micro/tomcat/conf/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml -d docker.io/tomcat:8
+```
+* zookeeper > 启动
+```
+docker run --privileged=true --name zookeeper -p 2181:2181 -v /opt/micro/zookeeper:/data --restart always -d docker.io/zookeeper
+```
+* dubbo-admin > 启动
+```
+docker run --privileged=true --name dubbo-admin -d \
+-p 9001:8080 \
+-e dubbo.registry.address=zookeeper://192.168.109.128:2181 \
+-e dubbo.admin.root.password=753951 \
+-e dubbo.admin.guest.password=guest \
+-v /opt/micro/dubbo-admin/logs:/usr/local/tomcat/logs \
+chenchuxin/dubbo-admin
+```
+* rabbitmq > 启动  
+
+这里注意获取镜像的时候要获取management版本的，不要获取last版本的，management版本的才带有管理界面。  
+
+默认端口：
+5672 -- client端通信口
+15672 -- 管理界面ui端口
+```
+docker run  --privileged=true --restart=always -p 5672:5672 -p 15672:15672 --name rabbitmq -d  rabbitmq:management
+```
+* jenkins > 启动  
+
+默认端口：
+8080 -- server页面端口
+50000 -- Slave 与 Master 通信端口
+```
+docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:50000  -v /opt/micro/jenkins:/var/jenkins_home docker.io/jenkins
+```
+
+#### 注意事项
+* Linux 相关端口一定要开放，还要注意一些容易忽视的端口号，比如dubbo:20880。
+* Linux 端口不能冲突。
+* Jenkins 构建异常，除了查看Jekins页面报错信息，还要查看对应项目日志。
+* Jenkins git配置-SSH方式：Username 可以通过公钥末尾项获取；Private Key 私钥全部内容。
+* Dubbo 提供方需要指定注册中心端口，消费方不需要指定注册中心端口。
+* Dubbo-admin 没有数据，多半是注册中心连不上。
+* ZK 数据windows可视化工具[ZooInspector]
+* 同一宿主机下各个容器间通信：使用默认bridge方式。A容器需要B容器的服务，可是使用[宿主机IP]+[宿主机被映射端口]的方式访问。
