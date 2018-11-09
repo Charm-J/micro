@@ -20,5 +20,5 @@ server:
   tomcat:
       uri-encoding: UTF-8
   servlet:
-    context-path: /message
+    context-path: /mirco-message
 

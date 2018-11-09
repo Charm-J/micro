@@ -3,7 +3,6 @@ package com.jeff.message.producer;
 import com.jeff.api.common.Result;
 import com.jeff.api.exception.ExceptionEnum;
 import com.jeff.api.model.bo.MsgTemplateModel;
-import com.jeff.api.utils.JsonUtil;
 import com.jeff.message.common.MQAccessBuilder;
 import com.jeff.message.constant.QueueName;
 import com.jeff.message.constant.RouterKey;
@@ -47,7 +46,6 @@ public class DirectToUser {
      * @return
      */
     private Result commonWay(MsgTemplateModel msgTemplateModel, String routerKey, String queue, Result Result) {
-        String content = JsonUtil.serialize(msgTemplateModel);
         MessageProducer messageProducer;
         try {
             //向mq服务端发送消息，exchange为EX_USER，routingkey为LOGIN_SUCCESS_QUEUE

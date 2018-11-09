@@ -31,8 +31,10 @@ public class RabbitConfig {
         connectionFactory.setUsername(username);
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost(virtualHost);
-        connectionFactory.setPublisherConfirms(publisherConfirms); // 开启消息确认
-        connectionFactory.setChannelCacheSize(channelCacheSize); // 信道缓存大小
+        // 开启消息确认
+        connectionFactory.setPublisherConfirms(publisherConfirms);
+        // 信道缓存大小
+        connectionFactory.setChannelCacheSize(channelCacheSize);
         return connectionFactory;
     }
 

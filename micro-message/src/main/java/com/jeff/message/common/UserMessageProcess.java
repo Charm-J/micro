@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.jeff.api.common.Result;
 import com.jeff.api.model.bo.MsgTemplateModel;
 import com.jeff.message.service.MessageProcess;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -54,6 +55,9 @@ public class UserMessageProcess implements MessageProcess<MsgTemplateModel> {
         Boolean success = false;
         try {
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+            if(StringUtils.isNotBlank(message.getFrom())){
+                simpleMailMessage.setFrom(message.getFrom());
+            }
             simpleMailMessage.setTo(message.getTo());
             simpleMailMessage.setSubject(message.getSubject());
             simpleMailMessage.setText(message.getContent());

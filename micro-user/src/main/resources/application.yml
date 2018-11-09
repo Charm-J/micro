@@ -31,3 +31,9 @@ mybatis:
 my:
   service:
     version: 1.0.0
+  message:
+    url:
+      loginSuccess: /toUser/login
+
+global:
+  requestMsPrefix: http://192.168.109.128:8003/mirco-message

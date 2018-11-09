@@ -8,8 +8,17 @@ public class MsgTemplateModel {
 
     private String from;
     private String to;
-    private String content;
     private String subject;
+    private String content;
+
+    public MsgTemplateModel() {
+    }
+
+    public MsgTemplateModel(String to, String subject, String content) {
+        this.to = to;
+        this.subject = subject;
+        this.content = content;
+    }
 
     public String getFrom() {
         return from;
@@ -27,19 +36,19 @@ public class MsgTemplateModel {
         this.to = to;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getSubject() {
         return subject;
     }
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

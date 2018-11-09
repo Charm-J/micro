@@ -36,6 +36,11 @@ public class User implements Serializable {
     private String pwd;
 
     /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
      * 创建时间
      */
     @Column(name = "create_time")
@@ -151,6 +156,24 @@ public class User implements Serializable {
      */
     public void setPwd(String pwd) {
         this.pwd = pwd == null ? null : pwd.trim();
+    }
+
+    /**
+     * 获取邮箱
+     *
+     * @return email - 邮箱
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * 设置邮箱
+     *
+     * @param email 邮箱
+     */
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     /**

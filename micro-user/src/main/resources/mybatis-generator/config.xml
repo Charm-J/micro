@@ -31,7 +31,7 @@
                         password="yetingfm@2018"/>
 
         <!--生成 model 模块-->
-        <javaModelGenerator targetPackage="com.jeff.user.model.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.jeff.user.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
             <property name="comments" value="true"/>
