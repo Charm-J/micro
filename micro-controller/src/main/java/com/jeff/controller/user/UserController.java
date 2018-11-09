@@ -34,7 +34,7 @@ public class UserController {
      */
     //@Auth
     @Log
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Result login(@RequestBody LoginReq loginReq, BindingResult result) {
         ParamUtil.valid(result);
         return userService.login(loginReq);
