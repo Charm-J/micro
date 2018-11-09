@@ -28,15 +28,15 @@ public class MqMsgHandle {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${global.requestMqPrefix}")
-    private String requestMqPrefix;
+    @Value("${global.requestMsPrefix}")
+    private String requestMsPrefix;
 
     @Async
     public void send(MsgTemplateModel model, String reqMethod) {
         if (StringUtils.isBlank(reqMethod)) {
             return;
         }
-        String reqUrl = requestMqPrefix + reqMethod;
+        String reqUrl = requestMsPrefix + reqMethod;
         logger.info(">>>>>>>send, request {} for data: {}", reqUrl, JSON.toJSONString(model));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);

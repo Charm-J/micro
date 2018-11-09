@@ -37,3 +37,4 @@ my:
 
 global:
   requestMsPrefix: http://192.168.109.128:8003/mirco-message
+  threadNamePrefix: micro-user_thread-
