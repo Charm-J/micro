@@ -452,6 +452,7 @@ docker run -d --privileged=true --name jenkins  -u root  -p 9002:8080 -p 50000:5
 ```
 
 #### 注意事项
+* 项目启动顺序：micro-message > micro-user > micro-controller
 * Linux 相关端口一定要开放，还要注意一些容易忽视的端口号，比如dubbo:20880。
 * Linux 端口不能冲突。
 * Jenkins 构建异常，除了查看Jekins页面报错信息，还要查看对应项目日志。
