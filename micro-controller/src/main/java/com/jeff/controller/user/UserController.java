@@ -29,14 +29,11 @@ public class UserController {
      * 用户登录
      *
      * @param loginReq
-     * @param result
      * @return
      */
-    //@Auth
     @Log
     @PostMapping("/login")
-    public Result login(@RequestBody LoginReq loginReq, BindingResult result) {
-        ParamUtil.valid(result);
+    public Result login(@RequestBody LoginReq loginReq) {
         return userService.login(loginReq);
     }
 
