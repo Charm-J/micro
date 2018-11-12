@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,8 @@ public class UserMessageProcess implements MessageProcess<MsgTemplateModel> {
 
     @Autowired
     private JavaMailSender javaMailSender;
+    @Value("${spring.mail.username}")
+    private String emailFrom;
 
     @Override
     public void process(Message message) {
@@ -55,9 +58,10 @@ public class UserMessageProcess implements MessageProcess<MsgTemplateModel> {
         Boolean success = false;
         try {
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-            if(StringUtils.isNotBlank(message.getFrom())){
-                simpleMailMessage.setFrom(message.getFrom());
+            if (StringUtils.isNotBlank(message.getFrom())) {
+                emailFrom = message.getFrom();
             }
+            simpleMailMessage.setFrom(emailFrom);
             simpleMailMessage.setTo(message.getTo());
             simpleMailMessage.setSubject(message.getSubject());
             simpleMailMessage.setText(message.getContent());
@@ -66,7 +70,7 @@ public class UserMessageProcess implements MessageProcess<MsgTemplateModel> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info("consume message >> send qsTxtMessage result = " + (success ? "ok" : "error"));
+        log.info("consume message >> send email result = " + (success ? "ok" : "error"));
         return success;
     }
 
