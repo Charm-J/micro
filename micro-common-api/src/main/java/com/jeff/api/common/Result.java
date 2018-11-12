@@ -1,7 +1,10 @@
 package com.jeff.api.common;
 
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
+
     private int code;
     private String msg;
     private Object data;
