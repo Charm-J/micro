@@ -1,8 +1,9 @@
 package com.jeff.api.model.vo;
 
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
-public class LoginReq {
+public class LoginReq implements Serializable {
 
     @NotEmpty(message = "用户名不能为空")
     private String username;
